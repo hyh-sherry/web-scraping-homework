@@ -4,13 +4,13 @@ import mission_to_mars
 
 app = Flask(__name__)
 
-app.config["MONGO_URL"] = "mongodb://localhost:27017/mars_app"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/mars_app"
 mongo = PyMongo(app)
 
 @app.route("/")
 def home():
     information = mongo.db.collection.find_one()
-    return render_template("index.html", listings = information)
+    return render_template("index.html", mars_info = information)
 
 
 @app.route("/scrape")
