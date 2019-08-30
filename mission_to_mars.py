@@ -29,7 +29,6 @@ def scrape_info():
     news_p = soup1.find('div', class_="article_teaser_body").text.strip()
     #news_p
     
-    browser.quit()
 
     #Mars Space Image
 
@@ -79,8 +78,6 @@ def scrape_info():
     # Store the name
     h1 = {}
     h1_name = soup_h1.find('h2', class_='title').text.strip()
-    string1 = h1_name.split(" ")
-    h1_name = string1[0] + " " + string1[1]
     # Store the image
     h1_img_url = soup_h1.find('li')
     h1_img_url = h1_img_url.a["href"]
@@ -95,8 +92,6 @@ def scrape_info():
     # Store the name
     h2 = {}
     h2_name = soup_h2.find('h2', class_='title').text.strip()
-    string2 = h2_name.split(" ")
-    h2_name = string2[0] + " " + string2[1]
     # Store the image
     h2_img_url = soup_h2.find('li')
     h2_img_url = h2_img_url.a["href"]
@@ -111,8 +106,6 @@ def scrape_info():
     # Store the name
     h3 = {}
     h3_name = soup_h3.find('h2', class_='title').text.strip()
-    string3 = h3_name.split(" ")
-    h3_name = string3[0] + " " + string3[1]
     # Store the image
     h3_img_url = soup_h3.find('li')
     h3_img_url = h3_img_url.a["href"]
@@ -127,8 +120,6 @@ def scrape_info():
     # Store the name
     h4 = {}
     h4_name = soup_h4.find('h2', class_='title').text.strip()
-    string4 = h4_name.split(" ")
-    h4_name = string4[0] + " " + string4[1]
     # Store the image
     h4_img_url = soup_h4.find('li')
     h4_img_url = h4_img_url.a["href"]
@@ -136,6 +127,9 @@ def scrape_info():
     h4["img_url"] = h4_img_url
     hemisphere_image_urls.append(h4)
 
+    browser.quit()
+
+    # Store all scraped data into a dictionary 
     mars_data = {
         "news": [{"title": news_title},{"text": news_p}],
         "image": featured_img_url,
